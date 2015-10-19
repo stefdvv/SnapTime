@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @snap.user_id %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @snap.photo %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @snap.content %>
+</p>
+
+<p>
+  <strong>Reception time:</strong>
+  <%= @snap.reception_time %>
+</p>
+
+<%= link_to 'Edit', edit_snap_path(@snap) %> |
+<%= link_to 'Back', snaps_path %>

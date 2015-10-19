@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  photo: MyString
+  content: MyString
+  reception_time: 2015-10-19 23:14:06
+
+two:
+  user_id: 
+  photo: MyString
+  content: MyString
+  reception_time: 2015-10-19 23:14:06
