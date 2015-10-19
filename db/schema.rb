@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019204023) do
+ActiveRecord::Schema.define(version: 20151019211623) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "snap_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "snaps", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "photo"
+    t.string   "content"
+    t.datetime "reception_time"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"
