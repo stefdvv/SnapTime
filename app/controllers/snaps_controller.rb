@@ -1,5 +1,5 @@
 class SnapsController < ApplicationController
-  before_action :set_snap, only: [:show, :edit, :update, :destroy]
+  before_action :set_snap, only: [:show, :edit, :update, :destroy, :send_message]
 
   # GET /snaps
   # GET /snaps.json
@@ -58,6 +58,19 @@ class SnapsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to snaps_url, notice: 'Snap was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # POST 
+  def send_message
+    @message = Message.create(@snap, 1)
+
+    respond_to do |format|
+      if @message.save
+        format.json
+      else
+        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
     end
   end
 

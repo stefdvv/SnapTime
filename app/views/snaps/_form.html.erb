@@ -1,33 +1,52 @@
-<%= form_for(@snap) do |f| %>
-  <% if @snap.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@snap.errors.count, "error") %> prohibited this snap from being saved:</h2>
+<%= form_for @snap, :html => { :class => "form-horizontal snap" } do |f| %>
 
-      <ul>
-      <% @snap.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @snap.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@snap.errors.count, "error") %> prohibited this snap from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @snap.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@snap[:user_id]) %>
   </div>
-  <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.text_field :photo %>
+  <div class="control-group">
+    <%= f.label :photo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :photo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@snap[:photo]) %>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
+  <div class="control-group">
+    <%= f.label :content, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :content, :class => 'form-control' %>
+    </div>
+    <%= error_span(@snap[:content]) %>
   </div>
-  <div class="field">
-    <%= f.label :reception_time %><br>
-    <%= f.datetime_select :reception_time %>
+  <div class="control-group">
+    <%= f.label :reception_time, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :reception_time, :class => 'form-control' %>
+    </div>
+    <%= error_span(@snap[:reception_time]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            snaps_path, :class => 'btn btn-default' %>
+
 <% end %>

@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Snap -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @snap.user_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @snap.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:photo) %>:</strong></dt>
+  <dd><img src="<%= @snap.photo %>" style="width:304px;height:228px;"></dd>
+  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
+  <dd><%= @snap.content %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reception_time) %>:</strong></dt>
+  <dd><%= @snap.reception_time.to_formatted_s(:short) %></dd>
+</dl>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @snap.photo %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @snap.content %>
-</p>
-
-<p>
-  <strong>Reception time:</strong>
-  <%= @snap.reception_time %>
-</p>
-
-<%= link_to 'Edit', edit_snap_path(@snap) %> |
-<%= link_to 'Back', snaps_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              snaps_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_snap_path(@snap), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              snap_path(@snap),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
